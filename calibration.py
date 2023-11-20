@@ -7,8 +7,8 @@ import pickle
 
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
 
-chessboardSize = (9,6)
-frameSize = (640,480)
+chessboardSize = (8,6)
+frameSize = (640,360)
 
 
 
@@ -29,7 +29,7 @@ objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
 
-images = glob.glob('cameraCalibration/images/*.png')
+images = glob.glob('C:/Mario/Programacion/repositorios/CameraCalibration/images/*.png')
 
 for image in images:
 
@@ -65,6 +65,9 @@ ret, cameraMatrix, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints,
 pickle.dump((cameraMatrix, dist), open( "calibration.pkl", "wb" ))
 pickle.dump(cameraMatrix, open( "cameraMatrix.pkl", "wb" ))
 pickle.dump(dist, open( "dist.pkl", "wb" ))
+
+print(cameraMatrix)
+print(dist)
 
 
 ############## UNDISTORTION #####################################################
